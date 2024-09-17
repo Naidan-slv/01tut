@@ -1,31 +1,41 @@
+import { useState } from 'react';
+
 const Content = () => {
+    const[name, setName] = useState('Dave');
+    const[count,setCount] = useState(0);
+    
+
     const handleNameChange = () => {
         const names = ['Bob', 'Kevin', 'Dave'];
+        // we use const because we never want to try to reassign name directly . We always want to use setName
+
         const int = Math.floor(Math.random() * 3);
-        return names[int];
+        setName(names[int]);
       };
       const handleClick = () =>{
-        console.log('You Clicked It');
+        setCount(count + 1);
+        setCount(count + 1);
+        console.log(count);
       }
-      const handleClick2 = (name) =>{
-        console.log(`${name} was clicked`);
+      const handleClick2 = () =>{
+        console.log(count); 
       }
-      const handleClick3 = (e) =>{
-        console.log(e);
-      }
+
 
     return (
         <main>
             <p onDoubleClick={handleClick}>
-                Hello {handleNameChange()}!
+                Hello {name}!
             </p>
-            <button onClick={handleClick}>Click It</button>
-            {/* We dont have the operators () after handle click as when we dont it is called immediately */}
-            <button onClick={() => handleClick2('Dave')}>Click It</button>
-             {/* We Need an anonymous function in handleClick2. Now handle click 2 can be called and we can pass in our name */}
+
+            {/* The button will change the name and not refresh the whole page which makes it faster */}
+            <button onClick={handleNameChange}>Change name</button>
             
-            <button onClick={(e) => handleClick3(e)}>Click It</button>            
-            {/* We get the buttons details bug we can make it even more specific using . */}
+            <button onClick={handleClick}>Click It</button>
+                
+            <button onClick={handleClick2}>Click It</button>  
+            {/* when clicking the third button it will log the state that is passed into the function. It doesnt change the value of the function even after we change the count*/}
+        
         </main>
     )
 }
