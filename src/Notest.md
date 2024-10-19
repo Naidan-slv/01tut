@@ -1,4 +1,3 @@
-# 9. Controlled Component inputs #
+# 10. Project Challenge
 
-We do this by setting the state as the one source of trut</form>
-
+i am writing this down to see if its still connected to my git and how it will behave
